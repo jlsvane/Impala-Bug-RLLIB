@@ -62,7 +62,7 @@ class MyRandomEnv(gym.Env):
         if config:
             
             try:
-                _seed = int(config.worker_index * (config.num_workers - config.vector_index))
+                _seed = int(config.worker_index * config.num_workers * (config.vector_index + 1))
                 _seed = _seed if _seed >= 0 else abs(_seed)
                 # We need the following line to seed self.np_random
                 super().reset(seed=_seed)
